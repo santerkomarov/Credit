@@ -17,6 +17,7 @@ CREATE TABLE `clients` (
  KEY `Inn` (`Inn`)
 ) ENGINE=InnoDB AUTO_INCREMENT=89 DEFAULT CHARSET=utf8mb4
 
+
 CREATE TABLE `credit` (
  `creditId` int(11) NOT NULL AUTO_INCREMENT,
  `startDate` varchar(30) NOT NULL,
