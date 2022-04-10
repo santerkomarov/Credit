@@ -1,0 +1,45 @@
+CREATE TABLE `clients` (
+ `id` int(11) NOT NULL AUTO_INCREMENT,
+ `client` varchar(10) NOT NULL,
+ `LastName` varchar(30) NOT NULL,
+ `FirstName` varchar(30) NOT NULL,
+ `Patronymics` varchar(30) NOT NULL,
+ `Inn` varchar(20) NOT NULL,
+ `PassportCode` varchar(10) DEFAULT NULL,
+ `PassportNumber` varchar(10) DEFAULT NULL,
+ `PassportDate` varchar(20) DEFAULT NULL,
+ `CompanyName` varchar(50) DEFAULT NULL,
+ `CompanyAddress` varchar(50) DEFAULT NULL,
+ `CompanyOGRN` varchar(30) DEFAULT NULL,
+ `CompanyINN` varchar(30) DEFAULT NULL,
+ `CompanyKPP` varchar(30) DEFAULT NULL,
+ PRIMARY KEY (`id`),
+ KEY `Inn` (`Inn`)
+) ENGINE=InnoDB AUTO_INCREMENT=89 DEFAULT CHARSET=utf8mb4
+
+CREATE TABLE `credit` (
+ `creditId` int(11) NOT NULL AUTO_INCREMENT,
+ `startDate` varchar(30) NOT NULL,
+ `quantityOfMonths` varchar(30) NOT NULL,
+ `closeDate` varchar(30) NOT NULL,
+ `paymentCredit` varchar(30) NOT NULL,
+ `summaCredit` varchar(30) NOT NULL,
+ `client_inn` varchar(20) NOT NULL,
+ PRIMARY KEY (`creditId`),
+ KEY `credit_ibfk_1` (`client_inn`),
+ CONSTRAINT `credit_ibfk_1` FOREIGN KEY (`client_inn`) REFERENCES `clients` (`Inn`) ON DELETE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=utf8mb4
+
+
+CREATE TABLE `deposit` (
+ `depositId` int(11) NOT NULL AUTO_INCREMENT,
+ `startDate` varchar(30) NOT NULL,
+ `quantityOfMonths` varchar(30) NOT NULL,
+ `closeDate` varchar(30) NOT NULL,
+ `periodDeposit` varchar(30) NOT NULL,
+ `summaDeposit` varchar(30) NOT NULL,
+ `client_inn` varchar(20) NOT NULL,
+ PRIMARY KEY (`depositId`),
+ KEY `deposit_ibfk_1` (`client_inn`),
+ CONSTRAINT `deposit_ibfk_1` FOREIGN KEY (`client_inn`) REFERENCES `clients` (`Inn`) ON DELETE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4
